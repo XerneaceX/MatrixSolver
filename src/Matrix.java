@@ -1,3 +1,5 @@
+import jdk.jfr.Unsigned;
+
 import java.util.Arrays;
 
 public class Matrix {
@@ -18,7 +20,7 @@ public class Matrix {
         System.out.println("============================================");
     }
 
-    public int getWorkerLine(int y, int x) {
+    private int getWorkerLine(int y, int x) {
         int i = 0;
         while (true) {
             if (matrix[0][x] != 0 && y != i) {
@@ -52,7 +54,7 @@ public class Matrix {
         System.out.println(Arrays.toString(getAnswersFromStairs()));
     }
 
-    public void solveForOne(int y, int x, int workerLine) {
+    private void solveForOne(int y, int x, int workerLine) {
         System.out.println("(1 - " + matrix[y][x] + ") / -" + matrix[y][x]);
         double factor = (1 - matrix[y][x]) / -matrix[workerLine][x];
         for (int number = 0; number <= matrix.length; number++) {
@@ -79,7 +81,7 @@ public class Matrix {
         return true;
     }
 
-    public boolean lineIsResolved(int line) {
+    private boolean lineIsResolved(int line) {
         for (int x = 0; x < matrix[0].length; x++) {
             if ((x == line && matrix[x][line] != 1) || (x != line && matrix[x][line] != 0)) return false;
         }
